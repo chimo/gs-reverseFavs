@@ -1,4 +1,4 @@
-BookmarkList
+ReverseFavs
 ================
 
 Tiny plugin to display a user's notices that were favored by others
