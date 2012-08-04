@@ -115,7 +115,7 @@ class ReverseFavsPlugin extends Plugin
             return false;
         }
 
-        $action->menuItem(common_local_url('reversefavs', array('nickname' => $nickname)),
+        $action->menuItem(common_local_url('reversefavs', array('nickname' => $this->user->nickname)),
                           // TRANS: Menu item in sample plugin.
                           _m('Reverse Favs'),
                           // TRANS: Menu item title in sample plugin.
