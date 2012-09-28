@@ -32,6 +32,7 @@ if (!defined('STATUSNET')) {
 }
 
 require_once 'reversefavsnoticestream.php';
+require_once 'reversefavsnoticelist.php';
 
 /**
  * List currently logged-in user's bookmakrs
@@ -150,7 +151,7 @@ class ReverseFavsAction extends Action
     function showContent()
     {
 
-        $nl = new NoticeList($this->notices, $this);
+        $nl = new ReverseFavsNoticeList($this->notices, $this);
 
         $cnt = $nl->show();
 
