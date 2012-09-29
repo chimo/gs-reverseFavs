@@ -4,9 +4,9 @@ require_once('./lib/threadednoticelist.php');
 
 class ReverseFavsNoticeList extends NoticeList
 {
-	protected $userProfile;
-	
-	function __construct($notice, $out=null, $profile=-1)
+    protected $userProfile;
+
+    function __construct($notice, $out=null, $profile=-1)
     {
         parent::__construct($notice, $out);
         if (is_int($profile) && $profile == -1) {
@@ -14,11 +14,11 @@ class ReverseFavsNoticeList extends NoticeList
         }
         $this->userProfile = $profile;
     }
-	
-	function show()
-	{
-		$this->out->elementStart('div', array('id' =>'notices_primary'));
-		
+
+    function show()
+    {
+        $this->out->elementStart('div', array('id' =>'notices_primary'));
+
         $this->out->element('h2', null, _m('HEADER','Notices'));
         $this->out->elementStart('ol', array('class' => 'notices threaded-notices xoxo'));
 
@@ -26,7 +26,7 @@ class ReverseFavsNoticeList extends NoticeList
         $total = count($notices);
         $notices = array_slice($notices, 0, NOTICES_PER_PAGE);
 
-		foreach ($notices as $notice) {
+        foreach ($notices as $notice) {
             try {
                 $item = $this->newListItem($notice);
                 $item->show();
@@ -35,15 +35,15 @@ class ReverseFavsNoticeList extends NoticeList
                 common_log(LOG_ERR, $e->getMessage());
                 continue;
             }
-		}
+        }
 
         $this->out->elementEnd('ol');
         $this->out->elementEnd('div');
 
-		return $total;
-	}
-	
-	function newListItem($notice)
+        return $total;
+    }
+
+    function newListItem($notice)
     {
         return new ReverseFavsNoticeListItem($notice, $this->out, $this->userProfile);
     }

@@ -77,7 +77,7 @@ class ReverseFavsAction extends Action
             $nickname = $this->returnToArgs();
             $nickname = $nickname[1]['nickname'];
         }
-        
+
         $this->user = User::staticGet('nickname', $nickname);
 
         if (!$this->user) {
@@ -90,7 +90,7 @@ class ReverseFavsAction extends Action
 
         $stream = new ReverseFavsNoticeStream($this->user->id, true);
         $this->notices = $stream->getNotices(($this->page-1)*NOTICES_PER_PAGE,
-                                                NOTICES_PER_PAGE + 1); 
+                                                NOTICES_PER_PAGE + 1);
 
         if($this->page > 1 && $this->notices->N == 0) {
             throw new ClientException(_('No such page.'), 404);
