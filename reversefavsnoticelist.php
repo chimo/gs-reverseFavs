@@ -59,8 +59,14 @@ class ReverseFavsNoticeListItem extends NoticeListItem
         $this->userProfile = $profile;
     }
 
+    // Same as ./lib/threadednoticelist
+    function initialItems() {
+        return 3;
+    }
+
     function showEnd()
     {
+        $notices = $this->notice->fetchAll();
         $max = $this->initialItems();
 
         if (Event::handle('StartShowThreadedNoticeTail', array($this, $this->notice, null))) {
