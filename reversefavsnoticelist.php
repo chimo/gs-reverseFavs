@@ -63,9 +63,6 @@ class ReverseFavsNoticeListItem extends NoticeListItem
 
     function showEnd()
     {
-        // $notices = $this->notice->fetchAll();
-        // $max = $this->initialItems();
-
         // All people who faved this notice
         $item = new ReverseFavsActors($this->notice, $this->out);
         $item->show();
