@@ -1,7 +1,4 @@
 <?php
-// Needed for 'ThreadedNoticeListFavesItem' class
-require_once('./lib/threadednoticelist.php');
-
 class ReverseFavsNoticeList extends NoticeList
 {
     protected $userProfile;
@@ -66,21 +63,49 @@ class ReverseFavsNoticeListItem extends NoticeListItem
 
     function showEnd()
     {
-        $notices = $this->notice->fetchAll();
-        $max = $this->initialItems();
+        // $notices = $this->notice->fetchAll();
+        // $max = $this->initialItems();
 
-        if (Event::handle('StartShowThreadedNoticeTail', array($this, $this->notice, null))) {
-            $this->out->elementStart('ul', 'notices threaded-replies xoxo');
-
-            // People who favored this notice
-            $item = new ThreadedNoticeListFavesItem($this->notice, $this->out);
-            $hasFaves = $item->show();
-
-            $this->out->elementEnd('ul');
-            Event::handle('EndShowThreadedNoticeTail', array($this, $this->notice, $notices));
-        }
+        // All people who faved this notice
+        $item = new ReverseFavsActors($this->notice, $this->out);
+        $item->show();
 
         parent::showEnd();
     }
 }
+
+class ReverseFavsActors extends NoticeListActorsItem
+{
+    // From /plugins/Favorite/lib/threadednoticelistfavesitem.php
+    function getProfiles()
+    {
+        $faves = Fave::byNotice($this->notice);
+        $profiles = array();
+        foreach ($faves as $fave) {
+            $profiles[] = $fave->user_id;
+        }
+        return $profiles;
+    }
+
+    function magicList($items)
+    {
+        return parent::magicList($items);
+    }
+
+    function getListMessage($count, $you)
+    {
+        return sprintf(_m('%%s like this'));
+    }
+
+    function showStart()
+    {
+        $this->out->elementStart('div', array('class' => 'notice-faves'));
+    }
+
+    function showEnd()
+    {
+        $this->out->elementEnd('div');
+    }
+}
+
 ?>
