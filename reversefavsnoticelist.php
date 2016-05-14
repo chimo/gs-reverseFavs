@@ -40,7 +40,7 @@ class ReverseFavsNoticeList extends NoticeList
         return $total;
     }
 
-    function newListItem($notice)
+    function newListItem(Notice $notice)
     {
         return new ReverseFavsNoticeListItem($notice, $this->out, $this->userProfile);
     }

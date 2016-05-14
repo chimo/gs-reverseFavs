@@ -130,7 +130,7 @@ class ReverseFavsPlugin extends Plugin
      *
      * @return value
      */
-    function onPluginVersion(&$versions)
+    function onPluginVersion(array &$versions)
     {
         $versions[] = array('name' => 'ReverseFavs',
                             'version' => self::VERSION,
