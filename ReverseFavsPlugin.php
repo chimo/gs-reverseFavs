@@ -17,16 +17,9 @@ class ReverseFavsPlugin extends Plugin
      */
     function onRouterInitialized($m)
     {
-        if (common_config('singleuser', 'enabled')) {
-            $nickname = User::singleUserNickname();
-            $m->connect('reversefavs',
-                        array('action' => 'reversefavs'),
-                        array('nickname' => $nickname)); // FIXME: useless
-        } else {
-            $m->connect(':nickname/reversefavs',
-                        array('action' => 'reversefavs'),
-                        array('nickname' => Nickname::DISPLAY_FMT));
-        }
+        $m->connect(':nickname/reversefavs',
+                    array('action' => 'reversefavs'),
+                    array('nickname' => Nickname::DISPLAY_FMT));
 
         return true;
     }
