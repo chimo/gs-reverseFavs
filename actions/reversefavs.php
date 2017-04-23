@@ -31,9 +31,6 @@ if (!defined('STATUSNET')) {
     exit(1);
 }
 
-require_once 'reversefavsnoticestream.php';
-require_once 'reversefavsnoticelist.php';
-
 /**
  * List currently logged-in user's bookmakrs
  *
