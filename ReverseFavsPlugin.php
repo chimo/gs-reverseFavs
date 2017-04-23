@@ -6,7 +6,7 @@ if (!defined('GNUSOCIAL')) {
 
 class ReverseFavsPlugin extends Plugin
 {
-    const VERSION = '0.1';
+    const VERSION = '0.1.1';
 
     /**
      * Map URLs to actions
@@ -74,7 +74,7 @@ class ReverseFavsPlugin extends Plugin
                             'homepage' => 'https://github.com/chimo/gs-reverseFavs',
                             'description' =>
                             // TRANS: Plugin description.
-                            _m('Simple extension for displaying your notices that have been favored by others.'));
+                            _m('Display a user\'s notices that have been favored by others.'));
         return true;
     }
 }
