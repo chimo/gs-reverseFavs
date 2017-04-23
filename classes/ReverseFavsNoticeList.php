@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('GNUSOCIAL')) {
+    exit(1);
+}
+
 class ReverseFavsNoticeList extends NoticeList
 {
     protected $userProfile;
@@ -105,4 +110,3 @@ class ReverseFavsActors extends NoticeListActorsItem
     }
 }
 
-?>

@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('GNUSOCIAL')) {
+    exit(1);
+}
+
 class RawReverseFavsNoticeStream extends NoticeStream
 {
     protected $user_id;
@@ -47,17 +51,6 @@ class RawReverseFavsNoticeStream extends NoticeStream
     }
 }
 
-/**
- * Notice stream for current user's notices, favored by others
- *
- * @category  Stream
- * @package   StatusNet
- * @author    Stephane Berube <chimo@chromic.org>
- * @copyright 2011 StatusNet, Inc.
- * @license   http://www.fsf.org/licensing/licenses/agpl-3.0.html AGPL 3.0
- * @link      http://status.net/
- */
-
 class ReverseFavsNoticeStream extends ScopingNoticeStream
 {
     function __construct($user_id, $own, $profile = -1)
@@ -78,4 +71,4 @@ class ReverseFavsNoticeStream extends ScopingNoticeStream
                             $profile);
     }
 }
-?>
+
