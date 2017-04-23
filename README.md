@@ -16,5 +16,5 @@ the above instructions may look like:
     mkdir -p local/plugins
     cd local/plugins
     git clone https://github.com/chimo/gs-reverseFavs.git ReverseFavs
-    echo "addPlugin('ReverseFavs');" >> config.php
+    echo "addPlugin('ReverseFavs');" >> ../../config.php
 
